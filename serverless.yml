@@ -4,6 +4,19 @@ service:
 # Add the serverless-webpack plugin
 plugins:
   - serverless-webpack
+  - serverless-apigw-binary
+
+
+custom:
+  apigwBinary:
+    types:
+      # Binary files will always be returned, no matter the Accept header of the request
+      # This is the easiest / must intuitive option
+      - '*/*'
+      
+      # Binary files will be returned if the request has a 'Accept: xxxx' and you set the Content-Type to the same 'xxxx'
+      # e.g. $ curl -X GET https://xxxxxxxxxx.execute-api.us-east-1.amazonaws.com/dev/hello -H "Accept: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" --output test.xlsx
+      #- 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'
 
 provider:
   name: aws
@@ -16,3 +29,11 @@ functions:
       - http:
           method: get
           path: hello
+
+  xlsx:
+    handler: handler.xlsx
+    events:
+      - http:
+          method: get
+          path: xlsx
+

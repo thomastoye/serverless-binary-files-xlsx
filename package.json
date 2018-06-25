@@ -7,11 +7,13 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
-    "source-map-support": "^0.5.0"
+    "source-map-support": "^0.5.0",
+    "xlsx": "^0.13.1"
   },
   "devDependencies": {
     "@types/aws-lambda": "0.0.22",
     "@types/node": "^8.0.57",
+    "serverless-apigw-binary": "^0.4.4",
     "serverless-webpack": "^4.0.0",
     "ts-loader": "^2.3.7",
     "typescript": "^2.5.2",
